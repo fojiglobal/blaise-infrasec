@@ -1,7 +1,7 @@
 ############################ Public Security Group #################
 resource "aws_security_group" "pub_sg" {
-   name   = "public-sg"
-   vpc_id     = aws_vpc.staging.id
+  name   = "public-sg"
+  vpc_id = aws_vpc.staging.id
 
   ingress {
     from_port        = 80
@@ -26,7 +26,7 @@ resource "aws_security_group" "pub_sg" {
     ipv6_cidr_blocks = ["::/0"]
   }
   tags = {
-    name ="public-sg"
+    name = "public-sg"
   }
   lifecycle {
     create_before_destroy = true
@@ -37,7 +37,7 @@ resource "aws_security_group" "pub_sg" {
 ################# Bastion security group #############
 
 resource "aws_security_group" "bastion_sg" {
-   name   = "bastion-sg"
+  name   = "bastion-sg"
   vpc_id = aws_vpc.staging.id
 
   ingress {
@@ -56,7 +56,7 @@ resource "aws_security_group" "bastion_sg" {
     ipv6_cidr_blocks = ["::/0"]
   }
   tags = {
-    name ="bastion-sg"
+    name = "bastion-sg"
   }
   lifecycle {
     create_before_destroy = true
@@ -68,19 +68,19 @@ resource "aws_security_group" "bastion_sg" {
 
 ############### private security group ##################
 resource "aws_security_group" "private_sg" {
-   name   = "private-sg"
+  name   = "private-sg"
   vpc_id = aws_vpc.staging.id
 
   ingress {
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
     security_groups = [aws_security_group.pub_sg.id]
   }
   ingress {
-    from_port        = 443
-    to_port          = 443
-    protocol         = "tcp"
+    from_port       = 443
+    to_port         = 443
+    protocol        = "tcp"
     security_groups = [aws_security_group.pub_sg.id]
   }
 
@@ -98,7 +98,7 @@ resource "aws_security_group" "private_sg" {
     ipv6_cidr_blocks = ["::/0"]
   }
   tags = {
-    name ="private-sg"
+    name = "private-sg"
   }
   lifecycle {
     create_before_destroy = true
