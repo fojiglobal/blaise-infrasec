@@ -53,4 +53,9 @@ variable "alb_ssl_profile" {
 
 }
 
+variable "drop_invalid_header" {
+  type = bool
+  default = true
+}
+
 
