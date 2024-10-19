@@ -137,3 +137,47 @@ variable "bastion_sg_egress" {
     description = string
   }))
 }
+
+variable "my_domain_name" {
+  type = string
+}
+
+variable "http_port" {
+  type = number
+}
+
+variable "http_protocol" {
+  type = string
+}
+
+variable "https_port" {
+  type = number
+}
+
+variable "https_protocol" {
+  type = string
+}
+
+variable "internet_facing" {
+  type = bool
+}
+
+variable "lb_type" {
+  type = string
+}
+
+variable "alb_ssl_profile" {
+  type = string
+}
+
+variable "my_domain_env" {
+  type = string
+}
+
+variable "route53_target_health" {
+  type = bool
+}
+
+variable "record_type_A" {
+  type = string
+}

@@ -12,6 +12,18 @@ module "staging" {
   private_sg_ingress = local.private-sg-ingress
   bastion_sg_ingress = local.bastion-sg-ingress
   bastion_sg_egress = local.bastion-sg-egress
+  my_domain_env = local.my_domain_env
+  my_domain_name = local.my_domain_name
+  http_port       = local.http_port
+  http_protocol   = local.http_protocol
+  https_port      = local.https_port
+  https_protocol  = local.https_protocol
+  internet_facing = local.internet_facing
+  lb_type         = local.lb_type
+  alb_ssl_profile = local.alb_ssl_profile
+  route53_target_health = local.route53_target_health
+  record_type_A         = local.record_type_A
+  
 }
 
 

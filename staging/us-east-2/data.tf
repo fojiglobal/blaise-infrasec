@@ -1,10 +1,10 @@
-data "aws_route53_zone" "micablexy" {
-  name = "micablexy.com."
+###################### Data Sources ######################
+data "aws_route53_zone" "my_domain" {
+  name = "${var.my_domain_name}."
 }
 
-# Find a certificate issued by (not imported into) ACM
 data "aws_acm_certificate" "alb_cert" {
-  domain      = "www.exam1.micablexy.com"
+  domain      = "*.${var.my_domain_name}"
   types       = ["AMAZON_ISSUED"]
   most_recent = true
 }
