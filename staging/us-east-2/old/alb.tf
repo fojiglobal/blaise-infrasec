@@ -17,6 +17,8 @@ resource "aws_lb" "staging_alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.pub_sg.id]
   subnets            = [aws_subnet.staging_pub_1.id, aws_subnet.staging_pub_2.id]
+  
+drop_invalid_header_fields = var.drop_invalid_header
 
 
   tags = {
