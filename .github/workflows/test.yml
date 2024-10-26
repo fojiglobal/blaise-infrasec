@@ -58,7 +58,7 @@ jobs:
     needs: tfplan
     runs-on: ubuntu-latest
     steps:
-        -uses: actions/checkout@v4
-        -name: Deploy Terraform
-        -run: echo "Terraform Apply"
+        - uses: actions/checkout@v4
+        - name: Deploy Terraform
+          run: echo "Terraform Apply"
  
