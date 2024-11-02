@@ -123,7 +123,8 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with: 
-          file: "./qa/us-east-2"          
+          file: "./qa/us-east-2" 
+          args: --severity-threshold=high         
     
         
   tfapply:
