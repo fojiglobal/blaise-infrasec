@@ -121,7 +121,8 @@ jobs:
       - name: scan tf code for security misconfigs. Resolve all crritical and high before merging to main
         uses: snyk/actions/iac@master
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}          
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with: "./qa/us-east-2"          
     
         
   tfapply:
