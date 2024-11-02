@@ -112,11 +112,21 @@ jobs:
                 body: output
               })
             }
+
+  terraform-synk-scan:
+    needs: tfplan
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: scan tf code for security misconfigs. Resolve all crritical and high before merging to main
+        uses: snyk/actions/iac@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}          
     
         
   tfapply:
     if: github.event_name == 'push'
-    needs: tfplan
+    needs: terraform-synk-scan
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v4
