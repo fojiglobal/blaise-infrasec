@@ -20,6 +20,8 @@ env:
 jobs:
   # This workflow contains a single job called "build"
   tfplan:
+    ## only run tfplan when a PR is opened
+    if: github.event_name == 'pull_request'
     defaults:
         run:
             shell: bash
@@ -113,6 +115,7 @@ jobs:
     
         
   tfapply:
+    if: github.event_name == 'push'
     needs: tfplan
     runs-on: ubuntu-latest
     steps:
