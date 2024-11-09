@@ -6,5 +6,3 @@ data "aws_route53_zone" "my_domain" {
 data "aws_acm_certificate" "alb_cert" {
   domain      = "*.${var.my_domain_name}"
   types       = ["AMAZON_ISSUED"]
-  most_recent = true
-}
